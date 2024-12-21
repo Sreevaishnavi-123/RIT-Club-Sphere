@@ -1,0 +1,658 @@
+.core-dashboard {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.dashboard-nav {
+  background: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left h1 {
+  color: #1976d2;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  color: #666;
+}
+
+.dashboard-stats {
+  margin-top: 80px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.stat-card h3 {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  color: #1976d2;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.dashboard-content {
+  margin: 2rem;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #f5f5f5;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: #e3f2fd;
+}
+
+.tab-btn.active {
+  background: #1976d2;
+  color: white;
+}
+
+/* Event Management Styles */
+.event-list, .attendance-list, .voting-list, .booking-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.event-card, .attendance-card, .voting-card, .booking-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.event-card h4, .attendance-card h4, .voting-card h4, .booking-card h4 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+}
+
+.add-event-btn, .create-election-btn, .new-booking-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-event-btn:hover, .create-election-btn:hover, .new-booking-btn:hover {
+  background: #1565c0;
+}
+
+.edit-btn, .view-btn, .view-results-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .dashboard-nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab-btn {
+    width: 100%;
+    text-align: left;
+  }
+
+  .dashboard-content {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .event-list, .attendance-list, .voting-list, .booking-list {
+    grid-template-columns: 1fr;
+  }
+} 
+
+.event-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.event-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.event-form h4 {
+  margin-bottom: 1.5rem;
+  color: #1976d2;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.save-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.event-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.event-card {
+  position: relative;
+}
+
+.event-card .edit-btn,
+.event-card .delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.event-card .edit-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.event-card .delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.event-card .edit-btn:hover {
+  background: #45a049;
+}
+
+.event-card .delete-btn:hover {
+  background: #da190b;
+} 
+
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.results-container {
+  margin: 1rem 0;
+}
+
+.result-bar {
+  margin: 1rem 0;
+}
+
+.progress-bar {
+  background: #f0f0f0;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  background: #1976d2;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.booking-card {
+  position: relative;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.confirmed {
+  color: #4caf50;
+}
+
+.status.cancelled {
+  color: #f44336;
+}
+
+.cancel-booking-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.close-btn {
+  background: #666;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.voting-card,
+.booking-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+} 
+
+.attendance-container {
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.attendance-table {
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.attendance-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.attendance-table th {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-badge.present {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.status-badge.absent {
+  background: #ffebee;
+  color: #f44336;
+}
+
+.attendance-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.mark-present {
+  background: #4caf50;
+  color: white;
+}
+
+.mark-absent {
+  background: #f44336;
+  color: white;
+}
+
+.attendance-summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.attendance-summary p {
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .attendance-container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .attendance-table {
+    font-size: 0.9rem;
+  }
+
+  .attendance-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .attendance-summary {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+} 
+
+.absent-row {
+  background-color: #fff5f5;
+}
+
+.attendance-btn.mark-absent {
+  background: #f44336;
+  color: white;
+}
+
+.attendance-btn.mark-absent:hover {
+  background: #d32f2f;
+}
+
+.attendance-btn.mark-present {
+  background: #4caf50;
+  color: white;
+}
+
+.attendance-btn.mark-present:hover {
+  background: #388e3c;
+}
+
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-badge.present {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.status-badge.absent {
+  background: #ffebee;
+  color: #f44336;
+}
+
+/* Add confirmation dialog styling */
+.confirmation-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+}
+
+.confirmation-dialog .buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+} 
+
+.voting-container {
+  max-width: 800px;
+}
+
+.candidates-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.candidate-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.candidate-card:hover {
+  border-color: #1976d2;
+}
+
+.candidate-card h5 {
+  margin: 0 0 1rem 0;
+  color: #1976d2;
+  font-size: 1.1rem;
+}
+
+.candidate-card p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.vote-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.vote-btn:hover {
+  background: #1565c0;
+}
+
+.vote-btn.selected {
+  background: #4caf50;
+}
+
+.submit-vote-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-vote-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.submit-vote-btn:hover:not(:disabled) {
+  background: #388e3c;
+}
+
+.voting-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.voting-card {
+  position: relative;
+}
+
+.voting-card .status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.voting-card .status.active {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.voting-card .status.ended {
+  background: #ffebee;
+  color: #f44336;
+}
+
+@media (max-width: 768px) {
+  .candidates-list {
+    grid-template-columns: 1fr;
+  }
+
+  .voting-actions {
+    flex-direction: column;
+  }
+
+  .voting-actions button {
+    width: 100%;
+  }
+} 
